@@ -13,7 +13,7 @@ export const Filter = () => {
     <>
       <h2>Find contacts by name</h2>
       <input
-        style={{ width: 300, height: 40 }}
+        style={{ width: 250, height: 30 }}
         type="text"
         onChange={addToFilter}
       />

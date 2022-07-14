@@ -1,12 +1,12 @@
 ul{
     display: flex;
-    
-
+    /* justify-content: center; */
+    vertical-align: middle;
 }
 button{
     margin-left: 50px;
     width: 100px;
-    height: 30px;
+    height: 25px;
     background-color: #7197e9;
     color: white;
     border: 1px solid #7197e9;
@@ -14,8 +14,8 @@ button{
     margin-bottom: 5px;
 }
 .contact{
-    font-size: 28px;
+    font-size: 24px;
     padding-left: 100px;
-    margin-top: 10px;
+    margin-top: 5px;
 
 }

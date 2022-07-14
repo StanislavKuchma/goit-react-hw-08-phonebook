@@ -49,7 +49,7 @@ const Form = () => {
           Name
           <br />
           <input
-            style={{ width: 300, height: 40 }}
+            style={{ width: 250, height: 30 }}
             value={name}
             onChange={handleChange}
             type="text"
@@ -64,7 +64,7 @@ const Form = () => {
           Number
           <br />
           <input
-            style={{ width: 300, height: 40 }}
+            style={{ width: 250, height: 30 }}
             value={number}
             onChange={handleChange}
             type="tel"
@@ -76,7 +76,7 @@ const Form = () => {
           <br />
           <button
             type="submit"
-            style={{ width: 150, height: 60, marginTop: 50 }}
+            style={{ width: 150, height: 40, marginTop: 12 }}
             className=""
           >
             Add contact
