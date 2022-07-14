@@ -1,8 +1,6 @@
 ul{
     display: flex;
-    /* justify-content: center; */
-    vertical-align: middle;
-}
+ }
 button{
     margin-left: 50px;
     width: 100px;
@@ -17,5 +15,4 @@ button{
     font-size: 24px;
     padding-left: 100px;
     margin-top: 5px;
-
-}
+ }
