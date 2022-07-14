@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { formSubmitHandler } from './redux/contactSlice';
+import { nanoid } from 'nanoid';
 
-const Form = ({ onSubmit }) => {
+const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -21,7 +26,16 @@ const Form = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    onSubmit({ name, number });
+    const item = {
+      id: nanoid(),
+      name: name,
+      number: number,
+    };
+    console.log(item);
+
+    dispatch(formSubmitHandler(item));
+
+    // onSubmit({ name, number });
     reset();
   };
   const reset = () => {
@@ -30,7 +44,7 @@ const Form = ({ onSubmit }) => {
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <label>
           Name
           <br />

@@ -1,13 +1,22 @@
-import React from "react"
-import PropTypes from 'prop-types';
-export const Filter = ({ value, onChange }) => {
-            return <>
-                    <h2>Find contacts by name</h2>
-            <input style={{ width: 300, height: 40}}  type="text" value={value} onChange= {onChange} />
-        </>
-}
+import React from 'react';
+import { changeFilter } from './redux/contactSlice';
+import { useDispatch } from 'react-redux';
 
-Filter.propTypes = {
-    value: PropTypes.string,
-    onChange: PropTypes.func,
+export const Filter = () => {
+  const dispatch = useDispatch();
+
+  const addToFilter = e => {
+    dispatch(changeFilter(e.target.value));
+  };
+
+  return (
+    <>
+      <h2>Find contacts by name</h2>
+      <input
+        style={{ width: 300, height: 40 }}
+        type="text"
+        onChange={addToFilter}
+      />
+    </>
+  );
 };
