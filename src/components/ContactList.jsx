@@ -16,9 +16,14 @@ export const ContactList = () => {
   return (
     <>
       {filterContacts.length === 0 && <p>Dont find any contacts</p>}
-      {filterContacts.map(data => (
+      {filterContacts.map((data, i) => (
         <ul className={s.contact} key={data.id}>
-          <ContactListItem id={data.id} name={data.name} number={data.number} />
+          <ContactListItem
+            id={data.id}
+            i={i}
+            name={data.name}
+            number={data.number}
+          />
         </ul>
       ))}
     </>
