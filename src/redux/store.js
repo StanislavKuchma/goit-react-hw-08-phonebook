@@ -11,6 +11,8 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { configureStore } from '@reduxjs/toolkit';
 import { contacts } from './contactSlice';
+import { contactsApi } from '../redux/contactsApi';
+import { setupListeners } from '@reduxjs/toolkit/query';
 
 const rootPersistConfig = {
   key: 'root',
@@ -21,15 +23,25 @@ const rootPersistConfig = {
 const persistedReducer = persistReducer(rootPersistConfig, contacts);
 
 let store = configureStore({
-  reducer: { contacts: persistedReducer },
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
+  reducer: {
+    contacts: persistedReducer,
+    [contactsApi.reducerPath]: contactsApi.reducer,
+  },
+  middleware: getDefaultMiddleware => [
+    ...getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+    contactsApi.middleware,
+  ],
+  // getDefaultMiddleware({
+  //   serializableCheck: {
+  //     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+  //   },
+  // }),
 });
-
+setupListeners(store.dispatch);
 let persistor = persistStore(store);
 
 export { store, persistor };

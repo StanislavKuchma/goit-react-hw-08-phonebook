@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
-import { deleteContact } from './redux/contactSlice';
+import { deleteContact } from '../redux/contactSlice';
 import { useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
 
 export const ContactListItem = ({ id, i, name, number }) => {
+  const dispatch = useDispatch();
+
   const variants = {
     visible: i => ({
       opacity: 1,
@@ -11,7 +13,7 @@ export const ContactListItem = ({ id, i, name, number }) => {
     }),
     hidden: { opacity: 0 },
   };
-  const dispatch = useDispatch();
+
   return (
     <>
       <motion.li
@@ -30,6 +32,8 @@ export const ContactListItem = ({ id, i, name, number }) => {
 
 ContactListItem.propTypes = {
   id: PropTypes.string,
+  i: PropTypes.number,
   name: PropTypes.string,
   number: PropTypes.string,
 };
+// https://62d266dcafb0b03fc5a5e09a.mockapi.io/api/:endpoint

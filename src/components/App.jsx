@@ -2,7 +2,7 @@ import React from 'react';
 import Form from './Form';
 import { ContactList } from './ContactList';
 import { Filter } from './Filter';
-import { formSubmitHandler } from './redux/contactSlice';
+import { formSubmitHandler } from '../redux/contactSlice';
 
 const App = () => {
   return (
