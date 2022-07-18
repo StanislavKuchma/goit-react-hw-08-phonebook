@@ -1,3 +1,4 @@
-export const getContacts = state => state.contacts.contacts;
-export const getFilter = state => state.contacts.filter;
-// export const getContacts = store => store.contacts.contacts;
+import { contactsApi } from './contactsApi';
+
+export const selectContacts = state =>
+  contactsApi.endpoints.getContacts.select()(state).data;

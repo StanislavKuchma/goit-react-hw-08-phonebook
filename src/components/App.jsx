@@ -1,28 +1,23 @@
 import React from 'react';
+import { useState } from 'react';
 import Form from './Form';
 import { ContactList } from './ContactList';
 import { Filter } from './Filter';
-import { formSubmitHandler } from '../redux/contactSlice';
 
 const App = () => {
+  const [filter, setFilter] = useState('');
+
+  const changeFilter = e => {
+    setFilter(e.currentTarget.value);
+  };
+
   return (
-    <div
-      style={
-        {
-          // height: '100vh',
-          // justifyItems: 'center',
-          // justifyContent: 'center',
-          // alignItems: 'center',
-          // fontSize: 25,
-          // color: '#010101',
-        }
-      }
-    >
+    <div>
       <h1>Phonebook</h1>
-      <Form onSubmit={formSubmitHandler} />
-      <Filter />
+      <Form />
+      <Filter value={filter} onChange={changeFilter} />
       <h2>Contact</h2>
-      <ContactList />
+      <ContactList filter={filter} />
     </div>
   );
 };

@@ -1,14 +1,13 @@
 import React from 'react';
 import { ContactListItem } from './ContactListItem';
 import s from './ContactList.module.css';
-import { useSelector } from 'react-redux';
-import { getContacts, getFilter } from '../redux/selectors';
-// import { useGetContactsQuery } from './redux/contactSlice';
+import { useGetContactsQuery } from '../redux/contactsApi';
+import { toast } from 'react-toastify';
 
-export const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
-  // const { data, error, isLoading } = useGetContactsQuery();
+export const ContactList = ({ filter }) => {
+  const { data, isError, isLoading } = useGetContactsQuery();
+
+  const contacts = data ?? [];
 
   const filteredContacts = () => {
     return contacts.filter(({ name }) =>
@@ -18,17 +17,22 @@ export const ContactList = () => {
   const filterContacts = filteredContacts();
   return (
     <>
-      {filterContacts.length === 0 && <p>Dont find any contacts</p>}
-      {filterContacts.map((data, i) => (
-        <ul className={s.contact} key={data.id}>
-          <ContactListItem
-            id={data.id}
-            i={i}
-            name={data.name}
-            number={data.number}
-          />
-        </ul>
-      ))}
+      {isError && toast.error(`Sorry try again`)}
+      {isLoading && <h3> Loading...</h3>}
+      {filterContacts.length === 0 ? (
+        <p>Dont find any contacts</p>
+      ) : (
+        filterContacts.map((data, i) => (
+          <ul className={s.contact} key={data.id}>
+            <ContactListItem
+              id={data.id}
+              i={i}
+              name={data.name}
+              number={data.number}
+            />
+          </ul>
+        ))
+      )}
     </>
   );
 };

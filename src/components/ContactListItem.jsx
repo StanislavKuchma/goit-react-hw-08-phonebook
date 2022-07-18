@@ -1,21 +1,30 @@
 import PropTypes from 'prop-types';
-import { deleteContact } from '../redux/contactSlice';
-import { useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
+import { useDeleteProductMutation } from '../redux/contactsApi';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Loader } from './Loader';
 
 export const ContactListItem = ({ id, i, name, number }) => {
-  const dispatch = useDispatch();
+  const [deleteContact, { isError, isLoading }] = useDeleteProductMutation();
+
+  const handleDeleteContact = async () => {
+    await deleteContact(id).unwrap();
+    toast.info(`Contacts  ${name} delete`);
+  };
 
   const variants = {
     visible: i => ({
       opacity: 1,
-      transition: { delay: i * 0.5 },
+      transition: { delay: i * 0.1 },
     }),
     hidden: { opacity: 0 },
   };
 
   return (
     <>
+      <ToastContainer autoClose={2500} />
+      {isError && toast.error(`Sorry try again`)}
       <motion.li
         className="item_contact"
         variants={variants}
@@ -24,7 +33,9 @@ export const ContactListItem = ({ id, i, name, number }) => {
         custom={i}
       >
         {name}:{number}
-        <button onClick={() => dispatch(deleteContact(id))}>Delete</button>
+        <button onClick={() => handleDeleteContact(id)}>
+          {isLoading ? <Loader size={14} /> : 'Delete'}
+        </button>
       </motion.li>
     </>
   );
@@ -36,4 +47,3 @@ ContactListItem.propTypes = {
   name: PropTypes.string,
   number: PropTypes.string,
 };
-// https://62d266dcafb0b03fc5a5e09a.mockapi.io/api/:endpoint

@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { formSubmitHandler } from '../redux/contactSlice';
-import { getContacts } from '../redux/selectors';
-import { nanoid } from 'nanoid';
+import { useSelector } from 'react-redux';
+import { useAddContactMutation } from '../redux/contactsApi';
+import { selectContacts } from '../redux/selectors';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Loader } from './Loader';
 
 const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const dispatch = useDispatch();
-  const contactsArray = useSelector(getContacts);
+  const [addContact, { isError, isLoading }] = useAddContactMutation();
+  const contactsArray = useSelector(selectContacts);
+
+  const reset = () => {
+    setName('');
+    setNumber('');
+  };
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -28,7 +35,6 @@ const Form = () => {
     e.preventDefault();
 
     const item = {
-      id: nanoid(),
       name: name,
       number: number,
     };
@@ -38,17 +44,21 @@ const Form = () => {
     );
     if (contactsForFind) {
       window.alert(`${name} is already in contacts`);
+      reset();
       return;
     }
-    dispatch(formSubmitHandler(item));
+    const handleAddContact = async () => {
+      await addContact(item).unwrap();
+      toast.info(`Contacts  ${name} added`);
+    };
+
+    handleAddContact();
     reset();
   };
-  const reset = () => {
-    setName('');
-    setNumber('');
-  };
+
   return (
     <>
+      {isError && toast.error(`Sorry try again`)}
       <form className="form" onSubmit={handleSubmit}>
         <label>
           Name
@@ -84,7 +94,7 @@ const Form = () => {
             style={{ width: 150, height: 40, marginTop: 12 }}
             className=""
           >
-            Add contact
+            {isLoading ? <Loader /> : 'Add contact'}
           </button>
         </label>
       </form>

@@ -1,19 +1,44 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-// import type { Pokemon } from './types'
 
-// Define a service using a base URL and expected endpoints
 export const contactsApi = createApi({
   reducerPath: 'contactsApi',
+  tagTypes: ['Contacts'],
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://62d266dcafb0b03fc5a5e09a.mockapi.io/api/',
   }),
   endpoints: builder => ({
     getContacts: builder.query({
       query: () => `contacts`,
+
+      providesTags: result =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: 'Contacts', id })),
+              { type: 'Contacts', id: 'LIST' },
+            ]
+          : [{ type: 'Contacts', id: 'LIST' }],
+    }),
+
+    addContact: builder.mutation({
+      query: body => ({
+        url: 'contacts',
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: [{ type: 'Contacts', id: 'LIST' }],
+    }),
+    deleteProduct: builder.mutation({
+      query: id => ({
+        url: `contacts/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: [{ type: 'Contacts', id: 'LIST' }],
     }),
   }),
 });
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
-export const { useGetContactsQuery } = contactsApi;
+export const {
+  useGetContactsQuery,
+  useAddContactMutation,
+  useDeleteProductMutation,
+} = contactsApi;
