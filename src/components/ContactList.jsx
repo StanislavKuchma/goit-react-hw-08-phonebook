@@ -4,8 +4,13 @@ import s from './ContactList.module.css';
 import { useGetContactsQuery } from '../redux/contactsApi';
 import { toast } from 'react-toastify';
 
-export const ContactList = ({ filter }) => {
+import { useSelector } from 'react-redux';
+import { getFilter } from '../redux/selectors';
+
+export const ContactList = () => {
   const { data, isError, isLoading } = useGetContactsQuery();
+
+  const filter = useSelector(getFilter);
 
   const contacts = data ?? [];
 
