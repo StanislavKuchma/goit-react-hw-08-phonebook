@@ -27,13 +27,23 @@ export const ContactListItem = ({ id, i, name, number }) => {
       {isError && toast.error(`Sorry try again`)}
       <motion.li
         className="item_contact"
+        style={{
+          display: 'flex',
+          alignItems: 'baseline',
+        }}
         variants={variants}
         initial="hidden"
         animate="visible"
         custom={i}
       >
         {name}:{number}
-        <button onClick={() => handleDeleteContact(id)}>
+        <button
+          onClick={() => handleDeleteContact(id)}
+          style={{
+            marginLeft: 50,
+            paddingBottom: 30,
+          }}
+        >
           {isLoading ? <Loader size={14} /> : 'Delete'}
         </button>
       </motion.li>

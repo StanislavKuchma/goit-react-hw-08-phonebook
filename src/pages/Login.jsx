@@ -36,7 +36,10 @@ const Login = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form
+      onSubmit={handleSubmit}
+      style={{ width: 650, height: 600, marginLeft: 100 }}
+    >
       <h2>Login</h2>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>

@@ -41,7 +41,10 @@ const Auth = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form
+      onSubmit={handleSubmit}
+      style={{ width: 650, height: 800, marginLeft: 100 }}
+    >
       <h2>Authefication</h2>
       <Form.Group className="mb-3" controlId="formBasicName">
         <Form.Label>Name</Form.Label>
