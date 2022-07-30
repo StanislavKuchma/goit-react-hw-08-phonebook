@@ -55,9 +55,7 @@ const Auth = () => {
           onChange={handleChange}
           name="name"
         />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
+        <Form.Text className="text-muted"></Form.Text>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
@@ -83,7 +81,11 @@ const Auth = () => {
         />
       </Form.Group>
 
-      <Button variant="primary" type="submit" style={{ padding: 0 }}>
+      <Button
+        variant="primary"
+        type="submit"
+        style={{ padding: 0, width: 100, height: 50 }}
+      >
         Submit
       </Button>
     </Form>

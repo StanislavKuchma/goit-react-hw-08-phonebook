@@ -1,9 +1,11 @@
-.navlink {
+.navlink{
     margin-right: 100px;
     text-decoration: none;
     font-weight: normal;
 
 }
-.authNav{
-    margin-left: 300px;
+
+.navlink:hover {
+    transform: scale(1.3);
+    color: rgb(230, 18, 18);
 }
