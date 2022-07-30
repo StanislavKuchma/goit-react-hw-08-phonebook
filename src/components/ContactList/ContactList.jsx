@@ -1,11 +1,11 @@
 import React from 'react';
-import { ContactListItem } from './ContactListItem';
+import { ContactListItem } from '../ContactListItem';
 import s from './ContactList.module.css';
-import { useGetContactsQuery } from '../redux/contactsApi';
+import { useGetContactsQuery } from '../../redux/contactsApi';
 import { toast } from 'react-toastify';
 
 import { useSelector } from 'react-redux';
-import { getFilter } from '../redux/selectors';
+import { getFilter } from '../../redux/selectors';
 
 export const ContactList = () => {
   const { data, isError, isLoading } = useGetContactsQuery();

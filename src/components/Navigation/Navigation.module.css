@@ -1,0 +1,17 @@
+ .app{
+display: flex;
+align-items: center;
+justify-content: space-between;
+height: 60px;
+padding-top: 20px;
+padding-bottom: 20px;
+background-color: rgb(183, 185, 187);
+padding-left: 25px;
+
+} 
+.navlink{
+    margin-right: 50px;
+    text-decoration: none;
+    font-weight: normal;
+   
+}
