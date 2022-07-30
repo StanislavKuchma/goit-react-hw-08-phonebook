@@ -26,10 +26,6 @@ const Login = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // // if (email === '') {
-    // //   toast(`No results   try again`);
-    // }
-
     dispatch(authOperations.login({ email, password }));
 
     reset();

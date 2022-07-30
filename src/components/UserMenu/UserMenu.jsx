@@ -24,8 +24,6 @@ export default function UserMenu() {
       >
         LogOut
       </Button>
-
-      {/* <button type="button"></button> */}
     </div>
   );
 }
