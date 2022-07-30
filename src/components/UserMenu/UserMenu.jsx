@@ -11,14 +11,14 @@ export default function UserMenu() {
 
   return (
     <div className={s.userMenu}>
-      <span>
+      <span style={{ marginRight: 10 }}>
         <VscAccount size="24px" />
       </span>
       <h6>Welcome {name}</h6>
 
       <Button
         variant="primary"
-        style={{ padding: 0 }}
+        style={{ padding: 0, marginLeft: 10 }}
         type="submit"
         onClick={() => dispatch(authOperations.logOut())}
       >
