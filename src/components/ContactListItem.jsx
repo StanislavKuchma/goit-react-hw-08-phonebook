@@ -36,7 +36,7 @@ export const ContactListItem = ({ id, i, name, number }) => {
         animate="visible"
         custom={i}
       >
-        {name}:{number}
+        {name}:&nbsp; {number}
         <button
           onClick={() => handleDeleteContact(id)}
           style={{
