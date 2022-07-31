@@ -54,6 +54,9 @@ const Auth = () => {
           value={name}
           onChange={handleChange}
           name="name"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
         />
         <Form.Text className="text-muted"></Form.Text>
       </Form.Group>
@@ -65,6 +68,8 @@ const Auth = () => {
           value={email}
           onChange={handleChange}
           name="email"
+          pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
+          required
         />
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
@@ -78,6 +83,7 @@ const Auth = () => {
           value={password}
           onChange={handleChange}
           name="password"
+          required
         />
       </Form.Group>
 

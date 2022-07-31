@@ -52,6 +52,7 @@ const App = () => {
                 }
               />
             </Route>
+            <Route path="*" element={<Home />} />
           </Routes>
         </Suspense>
       </div>

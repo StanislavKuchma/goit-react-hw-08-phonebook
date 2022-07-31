@@ -49,6 +49,8 @@ const Login = () => {
           value={email}
           onChange={handleChange}
           name="email"
+          pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
+          required
         />
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
@@ -63,6 +65,7 @@ const Login = () => {
           value={password}
           onChange={handleChange}
           name="password"
+          required
         />
       </Form.Group>
 

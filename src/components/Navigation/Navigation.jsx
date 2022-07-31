@@ -15,7 +15,7 @@ const Navigation = () => {
       </NavLink>
       {isLoggedIn && (
         <NavLink className={s.navlink} to="/contacts">
-          Movies
+          Contacts
         </NavLink>
       )}
 

@@ -27,8 +27,5 @@ code {
 .active {
   color: #d30d0d;
   cursor: default;
-  font-weight: bolder;
-
-
-
-}
+  transform: scale(1.4);
+ }
