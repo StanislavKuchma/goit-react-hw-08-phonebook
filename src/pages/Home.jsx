@@ -1,18 +1,23 @@
 import Navigation from '../components/Navigation/Navigation';
 import { Outlet } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
-
+import phoonebook from '../images/phoonebook.jpg';
 
 const Home = () => {
-  // const theme = useTheme();
-
   return (
-    <>
+    <div
+      style={{
+        backgroundImage: `url(${phoonebook})`,
+        minHeight: 'calc(100vh - 5px)',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+      }}
+    >
       <Navigation />
-
+      <h1>Phoonebook</h1>
       <Outlet />
-    </>
+    </div>
   );
 };
-
 export default Home;
