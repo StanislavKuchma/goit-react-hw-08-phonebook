@@ -30,6 +30,7 @@ export const ContactListItem = ({ id, i, name, number }) => {
         style={{
           display: 'flex',
           alignItems: 'baseline',
+          fontWeight: 'bold',
         }}
         variants={variants}
         initial="hidden"
