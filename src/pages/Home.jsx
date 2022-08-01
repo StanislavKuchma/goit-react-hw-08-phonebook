@@ -15,8 +15,7 @@ const Home = () => {
       }}
     >
       <Navigation />
-      <h1>Phoonebook</h1>
-      <Outlet />
+      <Outlet style={{ backgroundColor: 'none' }} />
     </div>
   );
 };
