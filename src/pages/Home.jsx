@@ -15,7 +15,7 @@ const Home = () => {
       }}
     >
       <Navigation />
-      <Outlet style={{ backgroundColor: 'none' }} />
+      <Outlet />
     </div>
   );
 };
